@@ -10,19 +10,19 @@ $movies = [
         'title' => "Avatar: La via dell'acqua",
         'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde neque deleniti assumenda, ea expedita explicabo porro rem illo adipisci similique debitis in beatae nesciunt natus quisquam. Nemo repellendus quas voluptatem.',
         'genres' => 'Fantascienza, azione, avventura',
-        'vote' => '8',
+        'vote' => 8,
     ],
     [
         'title' => "Coco",
         'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde neque deleniti assumenda, ea expedita explicabo porro rem illo adipisci similique debitis in beatae nesciunt natus quisquam. Nemo repellendus quas voluptatem.',
         'genres' => 'Animazione, commedia, fantastico',
-        'vote' => '9',
+        'vote' => 9,
     ],
     [
         'title' => "The emoji movie",
         'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde neque deleniti assumenda, ea expedita explicabo porro rem illo adipisci similique debitis in beatae nesciunt natus quisquam. Nemo repellendus quas voluptatem.',
         'genres' => 'Animazione, commedia, avventura',
-        'vote' => '4',
+        'vote' => 4,
     ],
 ];
 
@@ -37,6 +37,15 @@ class Movie{
         $this->description = $description;
         $this->genres = $genres;
         $this->vote = $vote;
+    }
+
+    public function getRecomendation($vote)
+    {
+        if ($vote > 6){
+            echo 'Questo film è consigliato';
+        } else {
+            echo 'Questo film non è consigliato';
+        }
     }
 };
 
@@ -68,6 +77,8 @@ foreach ($movies as $movie){
                 <h3><?= $movie->title ?></h3>
                 <p><?= $movie->description ?></p>
                 <span><?= $movie->genres ?></span>
+                <br>
+                <span><?= $movie->getRecomendation($movie->vote) ?></span>
             </div>
         <?php endforeach; ?>
     </div>
